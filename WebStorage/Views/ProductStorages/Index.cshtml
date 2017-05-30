@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebStorage.Models.ProductStorage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("ახალი", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            პროდუქტი
+        </th>
+        <th>
+            საწყობი
+        </th>
+        <th>
+            რაოდენობა
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Storage.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.ActionLink("რედაქტირება", "Edit", new { id=item.ProductStorageId }) |
+            @Html.ActionLink("დეტალურად", "Details", new { id=item.ProductStorageId }) |
+            @Html.ActionLink("წაშლა", "Delete", new { id=item.ProductStorageId })
+        </td>
+    </tr>
+}
+
+</table>
